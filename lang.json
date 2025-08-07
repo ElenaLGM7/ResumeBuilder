@@ -1,38 +1,50 @@
 {
-  "es": {
-    "title": "Creador de CV",
-    "subtitle": "Completa el formulario para generar tu currículum",
-    "name": "Nombre",
-    "email": "Correo electrónico",
-    "summary": "Resumen profesional",
-    "experience": "Experiencia laboral",
-    "education": "Formación académica",
-    "skills": "Habilidades",
-    "generate": "Generar vista previa",
-    "download": "Descargar PDF"
-  },
   "en": {
     "title": "Resume Builder",
-    "subtitle": "Fill in the form to generate your resume",
-    "name": "Name",
+    "subtitle": "Create your professional resume in minutes",
+    "name": "Full Name",
     "email": "Email",
+    "phone": "Phone",
     "summary": "Professional Summary",
     "experience": "Work Experience",
     "education": "Education",
     "skills": "Skills",
-    "generate": "Generate Preview",
-    "download": "Download PDF"
+    "generate": "Generate Resume",
+    "download": "Download PDF",
+    "preview": "Live Preview",
+    "footer": "© 2025 ResumeBuilder. All rights reserved.",
+    "language": "Language"
+  },
+  "es": {
+    "title": "Creador de CV",
+    "subtitle": "Crea tu currículum profesional en minutos",
+    "name": "Nombre completo",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "summary": "Resumen profesional",
+    "experience": "Experiencia laboral",
+    "education": "Educación",
+    "skills": "Habilidades",
+    "generate": "Generar currículum",
+    "download": "Descargar PDF",
+    "preview": "Vista previa",
+    "footer": "© 2025 ResumeBuilder. Todos los derechos reservados.",
+    "language": "Idioma"
   },
   "gl": {
     "title": "Creador de CV",
-    "subtitle": "Completa o formulario para xerar o teu currículum",
-    "name": "Nome",
+    "subtitle": "Crea o teu currículo profesional en minutos",
+    "name": "Nome completo",
     "email": "Correo electrónico",
+    "phone": "Teléfono",
     "summary": "Resumo profesional",
     "experience": "Experiencia laboral",
-    "education": "Formación académica",
+    "education": "Educación",
     "skills": "Habilidades",
-    "generate": "Xerar vista previa",
-    "download": "Descargar PDF"
+    "generate": "Xerar currículo",
+    "download": "Descargar PDF",
+    "preview": "Vista previa",
+    "footer": "© 2025 ResumeBuilder. Todos os dereitos reservados.",
+    "language": "Idioma"
   }
 }
