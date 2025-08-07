@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResumeBuilder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>ResumeBuilder</h1>
+    <button id="lang-toggle">🌍</button>
+  </header>
+
+  <main class="container">
+    <section id="form-section">
+      <h2>Introduce tus datos</h2>
+      <form id="cv-form">
+        <label>Nombre completo
+          <input type="text" id="name" name="name" required />
+        </label>
+        <label>Email
+          <input type="email" id="email" name="email" required />
+        </label>
+        <label>Resumen profesional
+          <textarea id="summary" name="summary"></textarea>
+        </label>
+        <label>Experiencia laboral
+          <textarea id="experience" name="experience"></textarea>
+        </label>
+        <label>Educación
+          <textarea id="education" name="education"></textarea>
+        </label>
+        <label>Habilidades
+          <textarea id="skills" name="skills"></textarea>
+        </label>
+        <button type="submit">Generar CV</button>
+      </form>
+    </section>
+
+    <section id="preview-section">
+      <h2>Vista previa</h2>
+      <div id="cv-preview"></div>
+      <button id="download-pdf">Descargar PDF</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ResumeBuilder. Desarrollado por Elena Guardia</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
