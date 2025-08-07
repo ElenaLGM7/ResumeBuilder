@@ -1,0 +1,38 @@
+{
+  "es": {
+    "title": "Creador de CV",
+    "subtitle": "Completa el formulario para generar tu currículum",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "summary": "Resumen profesional",
+    "experience": "Experiencia laboral",
+    "education": "Formación académica",
+    "skills": "Habilidades",
+    "generate": "Generar vista previa",
+    "download": "Descargar PDF"
+  },
+  "en": {
+    "title": "Resume Builder",
+    "subtitle": "Fill in the form to generate your resume",
+    "name": "Name",
+    "email": "Email",
+    "summary": "Professional Summary",
+    "experience": "Work Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "generate": "Generate Preview",
+    "download": "Download PDF"
+  },
+  "gl": {
+    "title": "Creador de CV",
+    "subtitle": "Completa o formulario para xerar o teu currículum",
+    "name": "Nome",
+    "email": "Correo electrónico",
+    "summary": "Resumo profesional",
+    "experience": "Experiencia laboral",
+    "education": "Formación académica",
+    "skills": "Habilidades",
+    "generate": "Xerar vista previa",
+    "download": "Descargar PDF"
+  }
+}
