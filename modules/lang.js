@@ -1,48 +1,29 @@
-// modules/lang.js
+import translations from './lang.json' assert { type: 'json' };
 
-let translations = {};
-let currentLang = 'es'; // idioma por defecto
-
-export async function loadTranslations() {
-  const res = await fetch('./lang.json');
-  translations = await res.json();
-  applyTranslations();
+export function setLanguage(lang) {
+  localStorage.setItem('language', lang);
+  applyTranslations(lang);
 }
 
-export function changeLanguage(lang) {
-  if (translations[lang]) {
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-    applyTranslations();
-  }
+export function getSavedLanguage() {
+  return localStorage.getItem('language') || 'es';
 }
 
-function applyTranslations() {
-  const elements = document.querySelectorAll('[data-i18n]');
-  elements.forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (translations[currentLang][key]) {
-      if (el.placeholder !== undefined && el.tagName === 'INPUT') {
-        el.placeholder = translations[currentLang][key];
-      } else {
-        el.textContent = translations[currentLang][key];
-      }
-    }
-  });
-}
+export function applyTranslations(lang) {
+  const t = translations[lang] || translations['es'];
 
-export function initLanguageSelector() {
-  const saved = localStorage.getItem('lang');
-  if (saved) {
-    currentLang = saved;
-  }
-  loadTranslations();
-
-  const selector = document.getElementById('lang-select');
-  if (selector) {
-    selector.value = currentLang;
-    selector.addEventListener('change', (e) => {
-      changeLanguage(e.target.value);
-    });
-  }
+  document.getElementById('app-title').textContent = t.title;
+  document.getElementById('app-subtitle').textContent = t.subtitle;
+  document.querySelector('label[for="name"]').textContent = t.name;
+  document.querySelector('label[for="email"]').textContent = t.email;
+  document.querySelector('label[for="phone"]').textContent = t.phone;
+  document.querySelector('label[for="summary"]').textContent = t.summary;
+  document.querySelector('label[for="experience"]').textContent = t.experience;
+  document.querySelector('label[for="education"]').textContent = t.education;
+  document.querySelector('label[for="skills"]').textContent = t.skills;
+  document.getElementById('generate-btn').textContent = t.generate;
+  document.getElementById('download-btn').textContent = t.download;
+  document.getElementById('preview-title').textContent = t.preview;
+  document.querySelector('footer').textContent = t.footer;
+  document.querySelector('label[for="lang-select"]').textContent = t.language;
 }
