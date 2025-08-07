@@ -2,53 +2,58 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ResumeBuilder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-i18n="title">Creador de CV</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>ResumeBuilder</h1>
-    <button id="lang-toggle">🌍</button>
+    <h1 data-i18n="title">Creador de CV</h1>
+    <p data-i18n="subtitle">Completa el formulario para generar tu currículum</p>
+
+    <select id="lang-select" aria-label="Selector de idioma">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+      <option value="gl">Galego</option>
+    </select>
   </header>
 
-  <main class="container">
-    <section id="form-section">
-      <h2>Introduce tus datos</h2>
-      <form id="cv-form">
-        <label>Nombre completo
-          <input type="text" id="name" name="name" required />
-        </label>
-        <label>Email
-          <input type="email" id="email" name="email" required />
-        </label>
-        <label>Resumen profesional
-          <textarea id="summary" name="summary"></textarea>
-        </label>
-        <label>Experiencia laboral
-          <textarea id="experience" name="experience"></textarea>
-        </label>
-        <label>Educación
-          <textarea id="education" name="education"></textarea>
-        </label>
-        <label>Habilidades
-          <textarea id="skills" name="skills"></textarea>
-        </label>
-        <button type="submit">Generar CV</button>
-      </form>
-    </section>
+  <main>
+    <form id="resume-form">
+      <label for="name" data-i18n="name">Nombre</label>
+      <input type="text" id="name" name="name" placeholder="" data-i18n="name" required />
 
-    <section id="preview-section">
-      <h2>Vista previa</h2>
-      <div id="cv-preview"></div>
-      <button id="download-pdf">Descargar PDF</button>
+      <label for="email" data-i18n="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="" data-i18n="email" required />
+
+      <label for="summary" data-i18n="summary">Resumen profesional</label>
+      <textarea id="summary" name="summary" rows="4"></textarea>
+
+      <label for="experience" data-i18n="experience">Experiencia laboral</label>
+      <textarea id="experience" name="experience" rows="4"></textarea>
+
+      <label for="education" data-i18n="education">Formación académica</label>
+      <textarea id="education" name="education" rows="3"></textarea>
+
+      <label for="skills" data-i18n="skills">Habilidades</label>
+      <input type="text" id="skills" name="skills" />
+
+      <div class="buttons">
+        <button type="submit" id="generate-btn" data-i18n="generate">Generar vista previa</button>
+        <button type="button" id="download-btn" data-i18n="download">Descargar PDF</button>
+      </div>
+    </form>
+
+    <section id="preview" aria-live="polite">
+      <!-- Aquí se mostrará la vista previa del CV -->
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 ResumeBuilder. Desarrollado por Elena Guardia</p>
+    <p>&copy; 2025 ResumeBuilder</p>
   </footer>
 
+  <!-- Módulos JavaScript -->
   <script type="module" src="main.js"></script>
 </body>
 </html>
