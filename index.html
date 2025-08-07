@@ -3,57 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title data-i18n="title">Creador de CV</title>
+  <title>ResumeBuilder</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1 data-i18n="title">Creador de CV</h1>
-    <p data-i18n="subtitle">Completa el formulario para generar tu currículum</p>
+    <h1 id="app-title">Creador de CV</h1>
+    <p id="app-subtitle">Crea tu currículum profesional en minutos</p>
 
-    <select id="lang-select" aria-label="Selector de idioma">
-      <option value="es">Español</option>
-      <option value="en">English</option>
-      <option value="gl">Galego</option>
-    </select>
+    <div class="lang-selector">
+      <label for="lang-select">Idioma:</label>
+      <select id="lang-select">
+        <option value="es">🇪🇸 Español</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="gl">🇬🇦 Galego</option>
+      </select>
+    </div>
   </header>
 
   <main>
     <form id="resume-form">
-      <label for="name" data-i18n="name">Nombre</label>
-      <input type="text" id="name" name="name" placeholder="" data-i18n="name" required />
+      <div class="form-group">
+        <label for="name">Nombre completo</label>
+        <input type="text" id="name" placeholder="Tu nombre" required />
+      </div>
 
-      <label for="email" data-i18n="email">Correo electrónico</label>
-      <input type="email" id="email" name="email" placeholder="" data-i18n="email" required />
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required />
+      </div>
 
-      <label for="summary" data-i18n="summary">Resumen profesional</label>
-      <textarea id="summary" name="summary" rows="4"></textarea>
+      <div class="form-group">
+        <label for="phone">Teléfono</label>
+        <input type="text" id="phone" placeholder="+34 000 000 000" />
+      </div>
 
-      <label for="experience" data-i18n="experience">Experiencia laboral</label>
-      <textarea id="experience" name="experience" rows="4"></textarea>
+      <div class="form-group">
+        <label for="summary">Resumen profesional</label>
+        <textarea id="summary" rows="3" placeholder="Describe brevemente tu perfil..."></textarea>
+      </div>
 
-      <label for="education" data-i18n="education">Formación académica</label>
-      <textarea id="education" name="education" rows="3"></textarea>
+      <div class="form-group">
+        <label for="experience">Experiencia laboral</label>
+        <textarea id="experience" rows="4" placeholder="Puestos anteriores, logros, fechas..."></textarea>
+      </div>
 
-      <label for="skills" data-i18n="skills">Habilidades</label>
-      <input type="text" id="skills" name="skills" />
+      <div class="form-group">
+        <label for="education">Educación</label>
+        <textarea id="education" rows="3" placeholder="Estudios, instituciones, fechas..."></textarea>
+      </div>
 
-      <div class="buttons">
-        <button type="submit" id="generate-btn" data-i18n="generate">Generar vista previa</button>
-        <button type="button" id="download-btn" data-i18n="download">Descargar PDF</button>
+      <div class="form-group">
+        <label for="skills">Habilidades</label>
+        <input type="text" id="skills" placeholder="HTML, CSS, JavaScript, React..." />
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" id="generate-btn">Generar currículum</button>
+        <button type="button" id="download-btn">Descargar PDF</button>
       </div>
     </form>
 
-    <section id="preview" aria-live="polite">
-      <!-- Aquí se mostrará la vista previa del CV -->
+    <section id="preview">
+      <h2 id="preview-title">Vista previa</h2>
+      <div id="resume-preview">
+        <!-- Aquí se mostrará el currículum generado -->
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 ResumeBuilder</p>
+    © 2025 ResumeBuilder. Todos los derechos reservados.
   </footer>
 
-  <!-- Módulos JavaScript -->
   <script type="module" src="main.js"></script>
 </body>
 </html>
