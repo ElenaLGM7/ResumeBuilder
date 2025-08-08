@@ -1,83 +1,56 @@
 // modules/lang.js
-export default {
+const translations = {
   es: {
-    title: "Resume Builder",
-    formTitle: "Formulario de Currículum",
-    previewTitle: "Vista previa del Currículum",
-
-    labels: {
-      fullName: "Nombre completo",
-      email: "Correo electrónico",
-      phone: "Teléfono",
-      linkedIn: "LinkedIn",
-      github: "GitHub",
-      skills: "Habilidades",
-      education: "Educación",
-      experience: "Experiencia laboral",
-    },
-
-    buttons: {
-      generate: "Generar CV",
-      clear: "Limpiar formulario",
-      export: "Exportar a TXT",
-    },
-
-    alerts: {
-      nothingToExport: "No hay contenido para exportar.",
-    },
+    title: 'Creador de CV',
+    formTitle: 'Rellena tus datos',
+    previewTitle: 'Vista previa del CV',
+    fullName: 'Nombre completo',
+    email: 'Correo electrónico',
+    phone: 'Teléfono',
+    linkedIn: 'Perfil de LinkedIn',
+    github: 'Perfil de GitHub',
+    skills: 'Habilidades',
+    education: 'Educación',
+    experience: 'Experiencia',
+    generateBtn: 'Generar vista previa',
+    clearBtn: 'Limpiar',
+    exportBtn: 'Exportar como .txt',
+    alertNoPreview: 'Primero debes generar la vista previa antes de exportar.',
   },
-
   en: {
-    title: "Resume Builder",
-    formTitle: "Resume Form",
-    previewTitle: "Resume Preview",
-
-    labels: {
-      fullName: "Full Name",
-      email: "Email",
-      phone: "Phone",
-      linkedIn: "LinkedIn",
-      github: "GitHub",
-      skills: "Skills",
-      education: "Education",
-      experience: "Work Experience",
-    },
-
-    buttons: {
-      generate: "Generate Resume",
-      clear: "Clear Form",
-      export: "Export as TXT",
-    },
-
-    alerts: {
-      nothingToExport: "There is nothing to export.",
-    },
+    title: 'Resume Builder',
+    formTitle: 'Fill in your details',
+    previewTitle: 'Resume Preview',
+    fullName: 'Full Name',
+    email: 'Email',
+    phone: 'Phone',
+    linkedIn: 'LinkedIn Profile',
+    github: 'GitHub Profile',
+    skills: 'Skills',
+    education: 'Education',
+    experience: 'Experience',
+    generateBtn: 'Generate Preview',
+    clearBtn: 'Clear',
+    exportBtn: 'Export as .txt',
+    alertNoPreview: 'You must generate the preview before exporting.',
   },
-
   gl: {
-    title: "Resume Builder",
-    formTitle: "Formulario do Currículum",
-    previewTitle: "Vista previa do Currículum",
-
-    labels: {
-      fullName: "Nome completo",
-      email: "Correo electrónico",
-      phone: "Teléfono",
-      linkedIn: "LinkedIn",
-      github: "GitHub",
-      skills: "Habilidades",
-      education: "Educación",
-      experience: "Experiencia laboral",
-    },
-
-    buttons: {
-      generate: "Xerar CV",
-      clear: "Limpar formulario",
-      export: "Exportar a TXT",
-    },
-
-    alerts: {
-      nothingToExport: "Non hai contido para exportar.",
-    },
+    title: 'Construtor de CV',
+    formTitle: 'Enche os teus datos',
+    previewTitle: 'Vista previa do CV',
+    fullName: 'Nome completo',
+    email: 'Correo electrónico',
+    phone: 'Teléfono',
+    linkedIn: 'Perfil de LinkedIn',
+    github: 'Perfil de GitHub',
+    skills: 'Habilidades',
+    education: 'Formación',
+    experience: 'Experiencia',
+    generateBtn: 'Xerar vista previa',
+    clearBtn: 'Limpar',
+    exportBtn: 'Exportar como .txt',
+    alertNoPreview: 'Primeiro debes xerar a vista previa antes de exportar.',
   }
 };
+
+export default translations;
