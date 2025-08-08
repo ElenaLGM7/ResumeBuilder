@@ -3,68 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Resume Builder</title>
+  <title data-i18n="app_title">Generador de Currículum</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1 id="title"></h1>
-      <p id="subtitle"></p>
-      <select id="langSelect" aria-label="Selector de idioma"></select>
-    </header>
+  <header>
+    <h1 data-i18n="app_title">Generador de Currículum</h1>
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+      <option value="gl">Galego</option>
+    </select>
+  </header>
 
-    <main>
-      <form id="cvForm">
-        <label>
-          <span id="labelName"></span>
-          <input type="text" name="name" required />
-        </label>
-        <label>
-          <span id="labelEmail"></span>
-          <input type="email" name="email" required />
-        </label>
-        <label>
-          <span id="labelPhone"></span>
-          <input type="tel" name="phone" required />
-        </label>
-        <label>
-          <span id="labelSummary"></span>
-          <textarea name="summary" rows="3" required></textarea>
-        </label>
-        <label>
-          <span id="labelExperience"></span>
-          <textarea name="experience" rows="3"></textarea>
-        </label>
-        <label>
-          <span id="labelEducation"></span>
-          <textarea name="education" rows="3"></textarea>
-        </label>
-        <label>
-          <span id="labelSkills"></span>
-          <textarea name="skills" rows="2"></textarea>
-        </label>
-        <label>
-          <span id="labelLanguages"></span>
-          <textarea name="languages" rows="2"></textarea>
-        </label>
-        <label>
-          <span id="labelProjects"></span>
-          <textarea name="projects" rows="2"></textarea>
-        </label>
+  <main>
+    <section>
+      <form id="resumeForm">
+        <label for="fullName" data-i18n="label_full_name">Nombre completo:</label>
+        <input type="text" id="fullName" name="fullName" required />
 
-        <button type="submit" id="generateBtn"></button>
+        <label for="profession" data-i18n="label_profession">Profesión:</label>
+        <input type="text" id="profession" name="profession" required />
+
+        <label for="summary" data-i18n="label_summary">Resumen:</label>
+        <textarea id="summary" name="summary" required></textarea>
+
+        <label for="skills" data-i18n="label_skills">Habilidades (separadas por comas):</label>
+        <input type="text" id="skills" name="skills" required />
+
+        <label for="experience" data-i18n="label_experience">Experiencia laboral:</label>
+        <textarea id="experience" name="experience" required></textarea>
+
+        <label for="education" data-i18n="label_education">Educación:</label>
+        <textarea id="education" name="education" required></textarea>
+
+        <button type="submit" data-i18n="button_generate">Generar CV</button>
       </form>
+    </section>
 
-      <section id="cvOutput" class="hidden">
-        <!-- Aquí se genera el resumen -->
-      </section>
-    </main>
+    <section id="cvOutput" class="hidden"></section>
+  </main>
 
-    <footer>
-      <button id="downloadBtn" class="hidden"></button>
-    </footer>
-  </div>
+  <footer>
+    <p>&copy; 2025 ResumeBuilder. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+  </footer>
 
   <script type="module" src="main.js"></script>
 </body>
