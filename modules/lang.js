@@ -1,53 +1,83 @@
+// modules/lang.js
 export default {
+  es: {
+    title: "Resume Builder",
+    formTitle: "Formulario de Currículum",
+    previewTitle: "Vista previa del Currículum",
+
+    labels: {
+      fullName: "Nombre completo",
+      email: "Correo electrónico",
+      phone: "Teléfono",
+      linkedIn: "LinkedIn",
+      github: "GitHub",
+      skills: "Habilidades",
+      education: "Educación",
+      experience: "Experiencia laboral",
+    },
+
+    buttons: {
+      generate: "Generar CV",
+      clear: "Limpiar formulario",
+      export: "Exportar a TXT",
+    },
+
+    alerts: {
+      nothingToExport: "No hay contenido para exportar.",
+    },
+  },
+
   en: {
     title: "Resume Builder",
-    formTitle: "Fill in your details",
+    formTitle: "Resume Form",
     previewTitle: "Resume Preview",
-    fullName: "Full Name",
-    email: "Email",
-    phone: "Phone",
-    linkedIn: "LinkedIn",
-    github: "GitHub",
-    skills: "Skills",
-    education: "Education",
-    experience: "Experience",
-    generateBtn: "Generate Resume",
-    clearBtn: "Clear Form",
-    exportBtn: "Export as TXT",
-    confirmClear: "Are you sure you want to clear the form? This action cannot be undone.",
+
+    labels: {
+      fullName: "Full Name",
+      email: "Email",
+      phone: "Phone",
+      linkedIn: "LinkedIn",
+      github: "GitHub",
+      skills: "Skills",
+      education: "Education",
+      experience: "Work Experience",
+    },
+
+    buttons: {
+      generate: "Generate Resume",
+      clear: "Clear Form",
+      export: "Export as TXT",
+    },
+
+    alerts: {
+      nothingToExport: "There is nothing to export.",
+    },
   },
-  es: {
-    title: "Generador de Currículum",
-    formTitle: "Rellena tus datos",
-    previewTitle: "Vista previa del currículum",
-    fullName: "Nombre completo",
-    email: "Correo electrónico",
-    phone: "Teléfono",
-    linkedIn: "LinkedIn",
-    github: "GitHub",
-    skills: "Habilidades",
-    education: "Educación",
-    experience: "Experiencia",
-    generateBtn: "Generar Currículum",
-    clearBtn: "Limpiar formulario",
-    exportBtn: "Exportar como TXT",
-    confirmClear: "¿Estás segura de que quieres limpiar el formulario? Esta acción no se puede deshacer.",
-  },
+
   gl: {
-    title: "Xestor de Currículum",
-    formTitle: "Enche os teus datos",
-    previewTitle: "Vista previa do currículum",
-    fullName: "Nome completo",
-    email: "Correo electrónico",
-    phone: "Teléfono",
-    linkedIn: "LinkedIn",
-    github: "GitHub",
-    skills: "Habilidades",
-    education: "Educación",
-    experience: "Experiencia",
-    generateBtn: "Xerar Currículum",
-    clearBtn: "Limpar formulario",
-    exportBtn: "Exportar como TXT",
-    confirmClear: "Estás segura de que queres limpar o formulario? Esta acción non se pode desfacer.",
-  },
+    title: "Resume Builder",
+    formTitle: "Formulario do Currículum",
+    previewTitle: "Vista previa do Currículum",
+
+    labels: {
+      fullName: "Nome completo",
+      email: "Correo electrónico",
+      phone: "Teléfono",
+      linkedIn: "LinkedIn",
+      github: "GitHub",
+      skills: "Habilidades",
+      education: "Educación",
+      experience: "Experiencia laboral",
+    },
+
+    buttons: {
+      generate: "Xerar CV",
+      clear: "Limpar formulario",
+      export: "Exportar a TXT",
+    },
+
+    alerts: {
+      nothingToExport: "Non hai contido para exportar.",
+    },
+  }
 };
