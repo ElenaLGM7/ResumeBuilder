@@ -1,51 +1,50 @@
-import { setLanguage, applyTranslations } from './modules/lang.js';
-
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('resumeForm');
+  const form = document.getElementById('cvForm');
   const output = document.getElementById('cvOutput');
-  const langSelect = document.getElementById('langSelect');
+  const section = document.getElementById('cvSection');
+  const downloadBtn = document.getElementById('downloadTxtBtn');
 
-  // Persistir idioma seleccionado
-  const savedLang = localStorage.getItem('lang') || 'es';
-  langSelect.value = savedLang;
-  setLanguage(savedLang).then(applyTranslations);
-
-  // Cambiar idioma dinámicamente
-  langSelect.addEventListener('change', async () => {
-    const selectedLang = langSelect.value;
-    localStorage.setItem('lang', selectedLang);
-    await setLanguage(selectedLang);
-    applyTranslations();
-  });
-
-  // Manejar envío del formulario
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const fullName = document.getElementById('fullName').value.trim();
-    const profession = document.getElementById('profession').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
     const summary = document.getElementById('summary').value.trim();
-    const skills = document.getElementById('skills').value.trim().split(',');
     const experience = document.getElementById('experience').value.trim();
     const education = document.getElementById('education').value.trim();
+    const skills = document.getElementById('skills').value.trim();
 
-    output.innerHTML = `
-      <h2 data-i18n="generated_title">Generated Resume</h2>
-      <p><strong data-i18n="full_name">Full Name:</strong> ${fullName}</p>
-      <p><strong data-i18n="profession">Profession:</strong> ${profession}</p>
-      <p><strong data-i18n="summary">Summary:</strong> ${summary}</p>
-      <p><strong data-i18n="skills">Skills:</strong></p>
-      <ul>
-        ${skills.map(skill => `<li>${skill.trim()}</li>`).join('')}
-      </ul>
-      <p><strong data-i18n="experience">Experience:</strong></p>
-      <p>${experience}</p>
-      <p><strong data-i18n="education">Education:</strong></p>
-      <p>${education}</p>
-    `;
+    const cv = `
+📌 ${name}
+📧 ${email}
 
-    applyTranslations(); // Volver a aplicar traducciones
-    output.classList.remove('hidden');
-    output.scrollIntoView({ behavior: 'smooth' });
+📝 Resumen Profesional:
+${summary}
+
+💼 Experiencia Laboral:
+${experience}
+
+🎓 Educación:
+${education}
+
+🛠️ Habilidades:
+${skills}
+`;
+
+    output.textContent = cv;
+    section.classList.remove('hidden');
+    downloadBtn.classList.remove('hidden');
+  });
+
+  downloadBtn.addEventListener('click', () => {
+    const cvText = output.innerText;
+    const blob = new Blob([cvText], { type: 'text/plain;charset=utf-8' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'Mi_CV.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   });
 });
