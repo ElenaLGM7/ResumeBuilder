@@ -3,78 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ResumeBuilder</title>
+  <title>Resume Builder</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1 id="app-title">Creador de CV</h1>
-    <p id="app-subtitle">Crea tu currículum profesional en minutos</p>
+  <div class="container">
+    <header>
+      <h1 id="title"></h1>
+      <p id="subtitle"></p>
+      <select id="langSelect" aria-label="Selector de idioma"></select>
+    </header>
 
-    <div class="lang-selector">
-      <label for="lang-select">Idioma:</label>
-      <select id="lang-select">
-        <option value="es">🇪🇸 Español</option>
-        <option value="en">🇬🇧 English</option>
-        <option value="gl">🇬🇦 Galego</option>
-      </select>
-    </div>
-  </header>
+    <main>
+      <form id="cvForm">
+        <label>
+          <span id="labelName"></span>
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          <span id="labelEmail"></span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span id="labelPhone"></span>
+          <input type="tel" name="phone" required />
+        </label>
+        <label>
+          <span id="labelSummary"></span>
+          <textarea name="summary" rows="3" required></textarea>
+        </label>
+        <label>
+          <span id="labelExperience"></span>
+          <textarea name="experience" rows="3"></textarea>
+        </label>
+        <label>
+          <span id="labelEducation"></span>
+          <textarea name="education" rows="3"></textarea>
+        </label>
+        <label>
+          <span id="labelSkills"></span>
+          <textarea name="skills" rows="2"></textarea>
+        </label>
+        <label>
+          <span id="labelLanguages"></span>
+          <textarea name="languages" rows="2"></textarea>
+        </label>
+        <label>
+          <span id="labelProjects"></span>
+          <textarea name="projects" rows="2"></textarea>
+        </label>
 
-  <main>
-    <form id="resume-form">
-      <div class="form-group">
-        <label for="name">Nombre completo</label>
-        <input type="text" id="name" placeholder="Tu nombre" required />
-      </div>
+        <button type="submit" id="generateBtn"></button>
+      </form>
 
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required />
-      </div>
+      <section id="cvOutput" class="hidden">
+        <!-- Aquí se genera el resumen -->
+      </section>
+    </main>
 
-      <div class="form-group">
-        <label for="phone">Teléfono</label>
-        <input type="text" id="phone" placeholder="+34 000 000 000" />
-      </div>
-
-      <div class="form-group">
-        <label for="summary">Resumen profesional</label>
-        <textarea id="summary" rows="3" placeholder="Describe brevemente tu perfil..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="experience">Experiencia laboral</label>
-        <textarea id="experience" rows="4" placeholder="Puestos anteriores, logros, fechas..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="education">Educación</label>
-        <textarea id="education" rows="3" placeholder="Estudios, instituciones, fechas..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="skills">Habilidades</label>
-        <input type="text" id="skills" placeholder="HTML, CSS, JavaScript, React..." />
-      </div>
-
-      <div class="form-buttons">
-        <button type="button" id="generate-btn">Generar currículum</button>
-        <button type="button" id="download-btn">Descargar PDF</button>
-      </div>
-    </form>
-
-    <section id="preview">
-      <h2 id="preview-title">Vista previa</h2>
-      <div id="resume-preview">
-        <!-- Aquí se mostrará el currículum generado -->
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 ResumeBuilder. Todos los derechos reservados.
-  </footer>
+    <footer>
+      <button id="downloadBtn" class="hidden"></button>
+    </footer>
+  </div>
 
   <script type="module" src="main.js"></script>
 </body>
