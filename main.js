@@ -1,175 +1,131 @@
-import langData from './modules/lang.js';
+// main.js
+import translations from './modules/lang.js';
 
 const elements = {
-  languageSelect: document.getElementById('language-select'),
-  fullName: document.getElementById('fullName'),
-  email: document.getElementById('email'),
-  phone: document.getElementById('phone'),
-  linkedIn: document.getElementById('linkedin'),
-  github: document.getElementById('github'),
-  skills: document.getElementById('skills'),
-  education: document.getElementById('education'),
-  experience: document.getElementById('experience'),
-  preview: document.getElementById('preview'),
-  generateBtn: document.getElementById('generate-btn'),
-  clearBtn: document.getElementById('clear-btn'),
-  exportBtn: document.getElementById('export-btn'),
   title: document.getElementById('title'),
-  formTitle: document.getElementById('form-title'),
-  previewTitle: document.getElementById('preview-title'),
+  formTitle: document.getElementById('formTitle'),
+  previewTitle: document.getElementById('previewTitle'),
+  preview: document.getElementById('preview'),
+
+  langButtons: document.querySelectorAll('nav button'),
+
+  form: document.getElementById('resume-form'),
+
+  labels: {
+    fullName: document.getElementById('labelFullName'),
+    email: document.getElementById('labelEmail'),
+    phone: document.getElementById('labelPhone'),
+    linkedIn: document.getElementById('labelLinkedIn'),
+    github: document.getElementById('labelGitHub'),
+    skills: document.getElementById('labelSkills'),
+    education: document.getElementById('labelEducation'),
+    experience: document.getElementById('labelExperience'),
+  },
+
+  inputs: {
+    fullName: document.getElementById('fullName'),
+    email: document.getElementById('email'),
+    phone: document.getElementById('phone'),
+    linkedIn: document.getElementById('linkedIn'),
+    github: document.getElementById('github'),
+    skills: document.getElementById('skills'),
+    education: document.getElementById('education'),
+    experience: document.getElementById('experience'),
+  },
+
+  generateBtn: document.getElementById('generateBtn'),
+  clearBtn: document.getElementById('clearBtn'),
+  exportBtn: document.getElementById('exportBtn'),
 };
 
-let currentLang = localStorage.getItem('selectedLang') || 'en';
+let currentLang = localStorage.getItem('lang') || 'es';
 
-function setTextContentByLang() {
-  const texts = langData[currentLang];
-  elements.title.textContent = texts.title;
-  elements.formTitle.textContent = texts.formTitle;
-  elements.previewTitle.textContent = texts.previewTitle;
+function translatePage(lang) {
+  const t = translations[lang];
+  elements.title.textContent = t.title;
+  elements.formTitle.textContent = t.formTitle;
+  elements.previewTitle.textContent = t.previewTitle;
 
-  // Labels
-  document.querySelector('label[for="fullName"]').textContent = texts.fullName;
-  document.querySelector('label[for="email"]').textContent = texts.email;
-  document.querySelector('label[for="phone"]').textContent = texts.phone;
-  document.querySelector('label[for="linkedin"]').textContent = texts.linkedIn;
-  document.querySelector('label[for="github"]').textContent = texts.github;
-  document.querySelector('label[for="skills"]').textContent = texts.skills;
-  document.querySelector('label[for="education"]').textContent = texts.education;
-  document.querySelector('label[for="experience"]').textContent = texts.experience;
+  elements.labels.fullName.textContent = t.labels.fullName;
+  elements.labels.email.textContent = t.labels.email;
+  elements.labels.phone.textContent = t.labels.phone;
+  elements.labels.linkedIn.textContent = t.labels.linkedIn;
+  elements.labels.github.textContent = t.labels.github;
+  elements.labels.skills.textContent = t.labels.skills;
+  elements.labels.education.textContent = t.labels.education;
+  elements.labels.experience.textContent = t.labels.experience;
 
-  // Buttons
-  elements.generateBtn.textContent = texts.generateBtn;
-  elements.clearBtn.textContent = texts.clearBtn;
-  elements.exportBtn.textContent = texts.exportBtn;
+  elements.generateBtn.textContent = t.buttons.generate;
+  elements.clearBtn.textContent = t.buttons.clear;
+  elements.exportBtn.textContent = t.buttons.export;
+
+  // Update active button
+  elements.langButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
 }
 
-function saveDataToLocalStorage() {
-  const data = {
-    fullName: elements.fullName.value,
-    email: elements.email.value,
-    phone: elements.phone.value,
-    linkedin: elements.linkedIn.value,
-    github: elements.github.value,
-    skills: elements.skills.value,
-    education: elements.education.value,
-    experience: elements.experience.value,
-    lang: currentLang,
-  };
-  localStorage.setItem('resumeData', JSON.stringify(data));
-  localStorage.setItem('selectedLang', currentLang);
-}
+function generatePreview() {
+  const data = elements.inputs;
+  let text = `${translations[currentLang].previewTitle}\n\n`;
+  text += `${translations[currentLang].labels.fullName}: ${data.fullName.value}\n`;
+  text += `${translations[currentLang].labels.email}: ${data.email.value}\n`;
+  text += `${translations[currentLang].labels.phone}: ${data.phone.value}\n`;
+  text += `${translations[currentLang].labels.linkedIn}: ${data.linkedIn.value}\n`;
+  text += `${translations[currentLang].labels.github}: ${data.github.value}\n\n`;
+  text += `${translations[currentLang].labels.skills}:\n${data.skills.value}\n\n`;
+  text += `${translations[currentLang].labels.education}:\n${data.education.value}\n\n`;
+  text += `${translations[currentLang].labels.experience}:\n${data.experience.value}\n`;
 
-function loadDataFromLocalStorage() {
-  const data = JSON.parse(localStorage.getItem('resumeData'));
-  if (data) {
-    elements.fullName.value = data.fullName || '';
-    elements.email.value = data.email || '';
-    elements.phone.value = data.phone || '';
-    elements.linkedIn.value = data.linkedin || '';
-    elements.github.value = data.github || '';
-    elements.skills.value = data.skills || '';
-    elements.education.value = data.education || '';
-    elements.experience.value = data.experience || '';
-    if (data.lang) {
-      currentLang = data.lang;
-      elements.languageSelect.value = currentLang;
-    }
-  }
-}
-
-function generateResumeText() {
-  const t = langData[currentLang];
-  return `
-${t.title}
-${'-'.repeat(t.title.length)}
-
-${t.fullName}: ${elements.fullName.value}
-${t.email}: ${elements.email.value}
-${t.phone}: ${elements.phone.value}
-${t.linkedIn}: ${elements.linkedIn.value}
-${t.github}: ${elements.github.value}
-
-${t.skills}:
-${elements.skills.value}
-
-${t.education}:
-${elements.education.value}
-
-${t.experience}:
-${elements.experience.value}
-`;
-}
-
-function updatePreview() {
-  elements.preview.textContent = generateResumeText();
+  elements.preview.textContent = text;
 }
 
 function clearForm() {
-  elements.fullName.value = '';
-  elements.email.value = '';
-  elements.phone.value = '';
-  elements.linkedIn.value = '';
-  elements.github.value = '';
-  elements.skills.value = '';
-  elements.education.value = '';
-  elements.experience.value = '';
-  updatePreview();
-  saveDataToLocalStorage();
+  elements.form.reset();
+  elements.preview.textContent = '';
 }
 
-function exportToTxt() {
-  const text = generateResumeText();
+function exportTextFile() {
+  const text = elements.preview.textContent;
+  if (!text) {
+    alert(translations[currentLang].alerts.nothingToExport);
+    return;
+  }
   const blob = new Blob([text], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.download = 'resume.txt';
-  link.href = url;
-  link.click();
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'resume.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
 
-elements.languageSelect.value = currentLang;
-setTextContentByLang();
-loadDataFromLocalStorage();
-updatePreview();
-
-elements.languageSelect.addEventListener('change', (e) => {
-  currentLang = e.target.value;
-  setTextContentByLang();
-  updatePreview();
-  saveDataToLocalStorage();
-});
-
-[
-  elements.fullName,
-  elements.email,
-  elements.phone,
-  elements.linkedIn,
-  elements.github,
-  elements.skills,
-  elements.education,
-  elements.experience,
-].forEach((input) => {
-  input.addEventListener('input', () => {
-    updatePreview();
-    saveDataToLocalStorage();
+elements.langButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentLang = btn.dataset.lang;
+    localStorage.setItem('lang', currentLang);
+    translatePage(currentLang);
+    generatePreview();
   });
 });
 
-elements.generateBtn.addEventListener('click', (e) => {
+elements.generateBtn.addEventListener('click', e => {
   e.preventDefault();
-  updatePreview();
-  saveDataToLocalStorage();
+  generatePreview();
 });
 
-elements.clearBtn.addEventListener('click', (e) => {
+elements.clearBtn.addEventListener('click', e => {
   e.preventDefault();
-  if (confirm(langData[currentLang].confirmClear)) {
-    clearForm();
-  }
+  clearForm();
 });
 
-elements.exportBtn.addEventListener('click', (e) => {
+elements.exportBtn.addEventListener('click', e => {
   e.preventDefault();
-  exportToTxt();
+  exportTextFile();
 });
+
+// Inicializamos la página
+translatePage(currentLang);
+generatePreview();
