@@ -3,65 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ResumeBuilder - Crea tu CV</title>
+  <title>Resume Builder</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-theme="light">
+<body>
   <header>
-    <h1 id="title">ResumeBuilder</h1>
-    <p id="subtitle">Crea tu currículum fácilmente</p>
-    <div class="controls">
-      <label for="select-lang" class="visually-hidden">Seleccionar idioma</label>
-      <select id="select-lang" aria-label="Seleccionar idioma">
-        <option value="es">Español</option>
-        <option value="en">English</option>
-        <option value="gl">Galego</option>
-      </select>
-
-      <label for="theme-select" class="visually-hidden">Seleccionar tema</label>
-      <select id="theme-select" aria-label="Seleccionar tema">
-        <option value="light">Claro</option>
-        <option value="dark">Oscuro</option>
-      </select>
-    </div>
+    <h1 id="title"></h1>
+    <nav>
+      <button data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="gl">GL</button>
+    </nav>
   </header>
 
   <main>
-    <section>
-      <h2 id="form-title">Formulario</h2>
+    <section id="form-section">
+      <h2 id="formTitle"></h2>
       <form id="resume-form">
-        <fieldset>
-          <label for="name" id="name-label">Nombre</label>
-          <input type="text" id="name" name="name" required autocomplete="given-name" />
+        <label for="fullName" id="labelFullName"></label>
+        <input type="text" id="fullName" name="fullName" required />
 
-          <label for="surname" id="surname-label">Apellidos</label>
-          <input type="text" id="surname" name="surname" required autocomplete="family-name" />
+        <label for="email" id="labelEmail"></label>
+        <input type="email" id="email" name="email" required />
 
-          <label for="email" id="email-label">Correo electrónico</label>
-          <input type="email" id="email" name="email" required autocomplete="email" />
+        <label for="phone" id="labelPhone"></label>
+        <input type="tel" id="phone" name="phone" />
 
-          <label for="phone" id="phone-label">Teléfono</label>
-          <input type="tel" id="phone" name="phone" autocomplete="tel" />
+        <label for="linkedIn" id="labelLinkedIn"></label>
+        <input type="url" id="linkedIn" name="linkedIn" />
 
-          <label for="summary" id="summary-label">Resumen profesional</label>
-          <textarea id="summary" name="summary" rows="4" placeholder="Breve resumen de tu perfil"></textarea>
-        </fieldset>
+        <label for="github" id="labelGitHub"></label>
+        <input type="url" id="github" name="github" />
 
-        <fieldset id="dynamic-sections" aria-label="Secciones dinámicas">
-          <!-- Aquí se añadirán las secciones dinámicas -->
-        </fieldset>
+        <label for="skills" id="labelSkills"></label>
+        <textarea id="skills" name="skills"></textarea>
 
-        <div class="buttons">
-          <button type="button" id="add-section-btn">Añadir sección</button>
-          <button type="button" id="generate-btn">Generar PDF</button>
-          <button type="button" id="download-btn" disabled>Descargar PDF</button>
-          <button type="reset" id="reset-btn">Resetear</button>
-        </div>
+        <label for="education" id="labelEducation"></label>
+        <textarea id="education" name="education"></textarea>
+
+        <label for="experience" id="labelExperience"></label>
+        <textarea id="experience" name="experience"></textarea>
+
+        <button type="submit" id="generateBtn"></button>
+        <button type="button" id="clearBtn"></button>
+        <button type="button" id="exportBtn"></button>
       </form>
     </section>
 
-    <section aria-live="polite" aria-label="Vista previa del currículum" id="preview" class="preview">
-      <!-- Vista previa en vivo -->
+    <section id="preview-section">
+      <h2 id="previewTitle"></h2>
+      <pre id="preview"></pre>
     </section>
   </main>
 
