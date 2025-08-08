@@ -5,42 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ResumeBuilder SPA</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
+  <header>
+    <img src="assets/logo.svg" alt="Logo" id="logo" />
+    <h1 data-lang="title">Creador de Currículum</h1>
+    <div class="controls">
+      <select id="lang-select">
+        <option value="es">🌐 Español</option>
+        <option value="en">🌐 English</option>
+        <option value="gl">🌐 Galego</option>
+      </select>
+      <button id="theme-toggle" title="Modo claro/oscuro">🌓</button>
+      <button id="load-demo" data-lang="loadDemo">Cargar demo</button>
+    </div>
+  </header>
+
   <main>
-    <h1 id="title">Generador de CV</h1>
-    <form id="cvForm">
-      <label for="name" id="labelName">Nombre:</label>
-      <input type="text" id="name" name="name" required />
+    <section id="form-section">
+      <h2 data-lang="personalInfo">Información personal</h2>
+      <input type="text" id="name" placeholder="Nombre" />
+      <input type="text" id="title" placeholder="Título profesional" />
+      <textarea id="summary" placeholder="Resumen profesional"></textarea>
 
-      <label for="email" id="labelEmail">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
+      <h2 data-lang="experience">Experiencia</h2>
+      <textarea id="experience" placeholder="Añade tu experiencia laboral..."></textarea>
 
-      <label for="summary" id="labelSummary">Resumen profesional:</label>
-      <textarea id="summary" name="summary" rows="4" required></textarea>
+      <h2 data-lang="education">Educación</h2>
+      <textarea id="education" placeholder="Añade tu formación académica..."></textarea>
 
-      <label for="experience" id="labelExperience">Experiencia laboral:</label>
-      <textarea id="experience" name="experience" rows="4" required></textarea>
+      <h2 data-lang="skills">Habilidades</h2>
+      <input type="text" id="skills" placeholder="HTML, CSS, JavaScript..." />
 
-      <label for="education" id="labelEducation">Educación:</label>
-      <textarea id="education" name="education" rows="4" required></textarea>
+      <div class="extra-options">
+        <label for="template-select" data-lang="selectTemplate">Plantilla:</label>
+        <select id="template-select">
+          <option value="classic">🎓 Clásica</option>
+          <option value="modern">🌟 Moderna</option>
+          <option value="minimal">🧘 Minimalista</option>
+        </select>
+      </div>
 
-      <label for="skills" id="labelSkills">Habilidades:</label>
-      <textarea id="skills" name="skills" rows="4" required></textarea>
+      <div class="actions">
+        <button id="generate-pdf" data-lang="generatePdf">📄 Descargar PDF</button>
+        <button id="export-json" data-lang="exportJson">💾 Exportar JSON</button>
+        <input type="file" id="import-json" accept=".json"/>
+        <label for="import-json" class="file-label" data-lang="importJson">📁 Importar JSON</label>
+      </div>
+    </section>
 
-      <button type="submit" id="generateBtn">Generar CV</button>
-    </form>
+    <section id="preview-section">
+      <h2 data-lang="preview">Vista previa</h2>
+      <div id="cv-preview" class="template classic">
+        <h1 id="preview-name">Nombre Apellido</h1>
+        <h2 id="preview-title">Título profesional</h2>
+        <p id="preview-summary">Resumen profesional...</p>
 
-    <section id="cvSection" class="hidden">
-      <h2 id="cvTitle">Tu CV generado</h2>
-      <pre id="cvOutput"></pre>
-      <div class="buttons">
-        <button id="downloadTxtBtn" class="hidden">📄 Descargar CV (.txt)</button>
+        <h3 data-lang="experience">Experiencia</h3>
+        <p id="preview-experience"></p>
+
+        <h3 data-lang="education">Educación</h3>
+        <p id="preview-education"></p>
+
+        <h3 data-lang="skills">Habilidades</h3>
+        <p id="preview-skills"></p>
       </div>
     </section>
   </main>
 
-  <script type="module" src="./modules/lang.js"></script>
-  <script src="main.js"></script>
+  <footer>
+    <p>© 2025 ResumeBuilder SPA. <span data-lang="builtBy">Desarrollado por Elena.</span></p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
 </body>
 </html>
