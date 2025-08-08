@@ -1,70 +1,208 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  color: #333;
-  padding: 2rem;
+/* ==== RESET GENERAL ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-main {
-  max-width: 700px;
-  margin: auto;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+html, body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-form {
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --accent-color: #007acc;
+  --card-bg: #f9f9f9;
+  --border-color: #dddddd;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --accent-color: #00bcd4;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+}
+
+/* ==== HEADER ==== */
+header {
+  padding: 1rem 2rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--card-bg);
 }
 
-label {
+header img#logo {
+  height: 40px;
+  margin-right: 1rem;
+}
+
+header h1 {
+  flex: 1;
+  font-size: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls select,
+.controls button {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* ==== MAIN LAYOUT ==== */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+#form-section,
+#preview-section {
+  flex: 1 1 400px;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* ==== FORM FIELDS ==== */
+input, textarea, select {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.actions {
   margin-top: 1rem;
-  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-input, textarea {
-  margin-top: 0.5rem;
-  padding: 0.7rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  margin-top: 1.5rem;
-  padding: 0.8rem;
+.actions button,
+.file-label {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   border: none;
-  border-radius: 5px;
-  background: #007BFF;
+  border-radius: 4px;
+  background-color: var(--accent-color);
   color: white;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease;
 }
 
-button:hover {
-  background: #0056b3;
+.actions button:hover,
+.file-label:hover {
+  opacity: 0.9;
 }
 
-#downloadTxtBtn {
-  background-color: #28a745;
-  margin-top: 1rem;
-}
-
-#downloadTxtBtn:hover {
-  background-color: #218838;
-}
-
-.hidden {
+input[type="file"] {
   display: none;
 }
 
-pre {
-  white-space: pre-wrap;
-  background: #f9f9f9;
-  padding: 1rem;
-  border-radius: 8px;
+.extra-options {
   margin-top: 1rem;
-  border: 1px solid #ddd;
+}
+
+/* ==== PREVIEW ==== */
+#cv-preview {
+  background-color: var(--bg-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px dashed var(--border-color);
+}
+
+#cv-preview h1 {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+}
+
+#cv-preview h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+#cv-preview h3 {
+  margin-top: 1.2rem;
+  font-weight: 600;
+}
+
+#cv-preview p {
+  margin: 0.3rem 0;
+  line-height: 1.4;
+}
+
+/* ==== TEMPLATES ==== */
+.template.classic {
+  font-family: 'Georgia', serif;
+}
+
+.template.modern {
+  font-family: 'Segoe UI', sans-serif;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+}
+
+.template.minimal {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ==== FOOTER ==== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  font-size: 0.9rem;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controls {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
 }
