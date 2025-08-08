@@ -2,81 +2,68 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ResumeBuilder SPA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ResumeBuilder - Crea tu CV</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 </head>
-<body>
+<body data-theme="light">
   <header>
-    <img src="assets/logo.svg" alt="Logo" id="logo" />
-    <h1 data-lang="title">Creador de Currículum</h1>
+    <h1 id="title">ResumeBuilder</h1>
+    <p id="subtitle">Crea tu currículum fácilmente</p>
     <div class="controls">
-      <select id="lang-select">
-        <option value="es">🌐 Español</option>
-        <option value="en">🌐 English</option>
-        <option value="gl">🌐 Galego</option>
+      <label for="select-lang" class="visually-hidden">Seleccionar idioma</label>
+      <select id="select-lang" aria-label="Seleccionar idioma">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="gl">Galego</option>
       </select>
-      <button id="theme-toggle" title="Modo claro/oscuro">🌓</button>
-      <button id="load-demo" data-lang="loadDemo">Cargar demo</button>
+
+      <label for="theme-select" class="visually-hidden">Seleccionar tema</label>
+      <select id="theme-select" aria-label="Seleccionar tema">
+        <option value="light">Claro</option>
+        <option value="dark">Oscuro</option>
+      </select>
     </div>
   </header>
 
   <main>
-    <section id="form-section">
-      <h2 data-lang="personalInfo">Información personal</h2>
-      <input type="text" id="name" placeholder="Nombre" />
-      <input type="text" id="title" placeholder="Título profesional" />
-      <textarea id="summary" placeholder="Resumen profesional"></textarea>
+    <section>
+      <h2 id="form-title">Formulario</h2>
+      <form id="resume-form">
+        <fieldset>
+          <label for="name" id="name-label">Nombre</label>
+          <input type="text" id="name" name="name" required autocomplete="given-name" />
 
-      <h2 data-lang="experience">Experiencia</h2>
-      <textarea id="experience" placeholder="Añade tu experiencia laboral..."></textarea>
+          <label for="surname" id="surname-label">Apellidos</label>
+          <input type="text" id="surname" name="surname" required autocomplete="family-name" />
 
-      <h2 data-lang="education">Educación</h2>
-      <textarea id="education" placeholder="Añade tu formación académica..."></textarea>
+          <label for="email" id="email-label">Correo electrónico</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
 
-      <h2 data-lang="skills">Habilidades</h2>
-      <input type="text" id="skills" placeholder="HTML, CSS, JavaScript..." />
+          <label for="phone" id="phone-label">Teléfono</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" />
 
-      <div class="extra-options">
-        <label for="template-select" data-lang="selectTemplate">Plantilla:</label>
-        <select id="template-select">
-          <option value="classic">🎓 Clásica</option>
-          <option value="modern">🌟 Moderna</option>
-          <option value="minimal">🧘 Minimalista</option>
-        </select>
-      </div>
+          <label for="summary" id="summary-label">Resumen profesional</label>
+          <textarea id="summary" name="summary" rows="4" placeholder="Breve resumen de tu perfil"></textarea>
+        </fieldset>
 
-      <div class="actions">
-        <button id="generate-pdf" data-lang="generatePdf">📄 Descargar PDF</button>
-        <button id="export-json" data-lang="exportJson">💾 Exportar JSON</button>
-        <input type="file" id="import-json" accept=".json"/>
-        <label for="import-json" class="file-label" data-lang="importJson">📁 Importar JSON</label>
-      </div>
+        <fieldset id="dynamic-sections" aria-label="Secciones dinámicas">
+          <!-- Aquí se añadirán las secciones dinámicas -->
+        </fieldset>
+
+        <div class="buttons">
+          <button type="button" id="add-section-btn">Añadir sección</button>
+          <button type="button" id="generate-btn">Generar PDF</button>
+          <button type="button" id="download-btn" disabled>Descargar PDF</button>
+          <button type="reset" id="reset-btn">Resetear</button>
+        </div>
+      </form>
     </section>
 
-    <section id="preview-section">
-      <h2 data-lang="preview">Vista previa</h2>
-      <div id="cv-preview" class="template classic">
-        <h1 id="preview-name">Nombre Apellido</h1>
-        <h2 id="preview-title">Título profesional</h2>
-        <p id="preview-summary">Resumen profesional...</p>
-
-        <h3 data-lang="experience">Experiencia</h3>
-        <p id="preview-experience"></p>
-
-        <h3 data-lang="education">Educación</h3>
-        <p id="preview-education"></p>
-
-        <h3 data-lang="skills">Habilidades</h3>
-        <p id="preview-skills"></p>
-      </div>
+    <section aria-live="polite" aria-label="Vista previa del currículum" id="preview" class="preview">
+      <!-- Vista previa en vivo -->
     </section>
   </main>
-
-  <footer>
-    <p>© 2025 ResumeBuilder SPA. <span data-lang="builtBy">Desarrollado por Elena.</span></p>
-  </footer>
 
   <script type="module" src="main.js"></script>
 </body>
